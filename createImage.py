@@ -1,4 +1,5 @@
-import numpy as np
+import pygame
 
 def createImage(image_width, image_height):
-    return np.zeros((image_width, image_height), dtype=np.uint8)
+    
+    return pygame.display.set_mode((image_width, image_height))
