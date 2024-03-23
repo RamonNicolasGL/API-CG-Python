@@ -1,25 +1,35 @@
 import pygame
+import numpy as np
+from createImage import createImage
+from imageShow import imageShow
+from primitives.setPixel import set_pixel
+from primitives.testes.teste_dda import runTesteDDA
 
 
-# Inicializa o Pygame
+# Inicialize o Pygame
 pygame.init()
 
-# Define as dimensões da janela
-largura = 800
-altura = 600
-tamanho_janela = (largura, altura)
+#Cria janela com altura e largura especificadas
+pixels = createImage(500,500)
 
-# Cria a janela
-janela = pygame.display.set_mode(tamanho_janela)
-pygame.display.set_caption("Janela do Pygame")
+#RGB(255,255,255)
+set_pixel(pixels, 50, 50, (255, 255, 255))
+set_pixel(pixels, 150, 50, (255, 255, 255))
+set_pixel(pixels, 300, 50, (255, 255, 255))
+set_pixel(pixels, 50, 400, (255, 255, 255))
+set_pixel(pixels, 70, 350, (255, 255, 255))
 
-# Loop principal
-while True:
-    # Verifica se o usuário clicou no botão fechar
+runTesteDDA(pixels)
+
+#Loop principal
+executando = True
+while executando:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+            executando = False
+    
+    #Atualiza o display
+    imageShow()
 
-    # Atualiza a janela
-    pygame.display.update()
+# Encerre o Pygame
+pygame.quit()
