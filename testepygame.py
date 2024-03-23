@@ -3,8 +3,10 @@ import numpy as np
 from createImage import createImage
 from imageShow import imageShow
 from primitives.setPixel import set_pixel
-from primitives.testes.teste_dda import runTesteDDA
-from primitives.testes.teste_setPixel import runTestSetPixel
+from testes.teste_dda import runTesteDDA
+from testes.teste_setPixel import runTestSetPixel
+from testes.teste_bresenham import runBresenhamTest
+
 
 
 # Inicialize o Pygame
@@ -13,8 +15,10 @@ pygame.init()
 #Cria janela com altura e largura especificadas
 pixels = createImage(500,500)
 
-runTestSetPixel (pixels)
-runTesteDDA(pixels)
+# runTestSetPixel (pixels)
+# runTesteDDA(pixels)
+runBresenhamTest(pixels)
+
 
 #Loop principal
 executando = True
