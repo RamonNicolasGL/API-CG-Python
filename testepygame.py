@@ -4,6 +4,7 @@ from createImage import createImage
 from imageShow import imageShow
 from primitives.setPixel import set_pixel
 from primitives.testes.teste_dda import runTesteDDA
+from primitives.testes.teste_setPixel import runTestSetPixel
 
 
 # Inicialize o Pygame
@@ -12,13 +13,7 @@ pygame.init()
 #Cria janela com altura e largura especificadas
 pixels = createImage(500,500)
 
-#RGB(255,255,255)
-set_pixel(pixels, 50, 50, (255, 255, 255))
-set_pixel(pixels, 150, 50, (255, 255, 255))
-set_pixel(pixels, 300, 50, (255, 255, 255))
-set_pixel(pixels, 50, 400, (255, 255, 255))
-set_pixel(pixels, 70, 350, (255, 255, 255))
-
+runTestSetPixel (pixels)
 runTesteDDA(pixels)
 
 #Loop principal
