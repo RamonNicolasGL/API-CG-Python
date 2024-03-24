@@ -26,6 +26,6 @@ def frange (start, stop=None, step=None):
 def circle(pixels, xc, yc, r, intensidade):
     c = []
 
-    for ang in frange(0, 2*math.pi, 0.25):
+    for ang in frange(0, 2*math.pi, 0.025):
         insertPoint(c, math.floor(xc + r*math.cos(ang)), math.floor(yc + r*math.sin(ang)))
     poligono(pixels, c, intensidade)
