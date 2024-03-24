@@ -17,8 +17,7 @@ pygame.init()
 #Cria janela com altura e largura especificadas
 pixels = createImage(800,800)
 
-
-# runCircleTest(pixels)
+runCircleTest(pixels)
 # runPoligonTest(pixels)
 # runTestSetPixel (pixels)
 # runTesteDDA(pixels)
