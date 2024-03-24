@@ -1,18 +1,43 @@
 from primitives.setPixel import set_pixel
-import math
+from primitives.dda_aa import sign
 
-def bresenham(screen, xi, yi, xf, yf, intensidade):
-    dx = xf - xi    
-    dy = yf - yi
-
-    y = yi
-    p = dx - 2*dy
+def bresenham(pixels, xi, yi, xf, yf, intensidade):
     
-    for x in range (xi, xf):
+    if xf < xi:
+        aux = xf
+        xf = xi
+        xi = aux
+
+        aux = yf
+        yf = yi
+        yi = aux
+
+    dx = abs(xf - xi)
+    dy = abs(yf - yi)
+
+    aux = 0 
+    if dy>dx:
+        aux = dx
+        dx = dy
+        dy = aux
+        aux = 1
+
+    y = 0
+    dy2 = 2*dy
+    dy2dx2 = dy2 - 2*dx
+    s = sign(yf-yi)
+
+    p = dx -dy2
+
+    for x in range(0, dx):
         if p < 0:
-            p = p - 2*dy + 2*dx
+            p = p - dy2dx2
             y = y + 1
         else:
-            p = p - 2*dy
-        
-        set_pixel(screen, x, y, intensidade);
+            p = p - dy2
+
+        if aux == 0:
+            set_pixel(pixels, xi +x, yi + s*y, intensidade)
+        else:
+            set_pixel(pixels, xi +y, yi + s*x, intensidade)
+
